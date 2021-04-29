@@ -21,7 +21,6 @@ import { useItemContext } from "../ItemContext.js";
 
 const HomeScreen = ({ navigation }) => {
   const { item, setItem } = useItemContext();
-  const [basketItem, setBasketItem] = React.useState([]);
   const [modaleVisible, setModalVisible] = React.useState(false);
   const [modaleVisibleFilter, setModalVisibleFilter] = React.useState(false);
   const [selectedItem, setSelectedItem] = React.useState(null);
@@ -544,7 +543,6 @@ const HomeScreen = ({ navigation }) => {
                     setModalVisible(!modaleVisible);
                     setSelectedItem(selectedItem);
                     let newList = [...item, selectedItem];
-                    setBasketItem(() => newList);
                     setItem(newList);
                   }}
                 >

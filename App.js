@@ -1,9 +1,11 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Tabs from "/Users/lecourtoistristan/ShoesApp/Tabs.js";
-import SignUp from "/Users/lecourtoistristan/ShoesApp/SignUp.js";
-import { ItemContext } from "/Users/lecourtoistristan/ShoesApp/ItemContext.js";
+import Tabs from "../ShoesApp/Tabs";
+import SignUp from "../ShoesApp/SignUp";
+import Login from "../ShoesApp/Login"
+import { ItemContext } from "../ShoesApp/ItemContext";
+import NewAccount from "../ShoesApp/NewAccount"
 
 const Stack = createStackNavigator();
 
@@ -15,10 +17,12 @@ const App = () => {
           screenOptions={{
             headerShown: false,
           }}
-          initialRouteName={"Tabs"}
+          initialRouteName={"SignUp"}
         >
           <Stack.Screen name="Tabs" component={Tabs} />
           <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="NewAccount" component={NewAccount} />
         </Stack.Navigator>
       </NavigationContainer>
     </ItemContext>

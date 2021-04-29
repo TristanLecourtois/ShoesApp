@@ -26,7 +26,7 @@ const FoodScreen = ({ navigation }) => {
 
   const ItemBox = (props) => {
     const [count, setCount] = React.useState(1);
-   
+
     const rightSwipe = () => {
       return (
         <TouchableOpacity
