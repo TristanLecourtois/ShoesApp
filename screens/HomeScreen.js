@@ -780,6 +780,7 @@ const HomeScreen = ({ navigation }) => {
               alignItems: "center",
               justifyContent: "center",
             }}
+            onPress={() =>navigation.navigate("SignUp")}
           >
             <Image
               resizeMode="contain"

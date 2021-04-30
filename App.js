@@ -6,6 +6,7 @@ import SignUp from "../ShoesApp/SignUp";
 import Login from "../ShoesApp/Login"
 import { ItemContext } from "../ShoesApp/ItemContext";
 import NewAccount from "../ShoesApp/NewAccount"
+import NewAccount2 from "./NewAccount2.js";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ const App = () => {
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="NewAccount" component={NewAccount} />
+          <Stack.Screen name="NewAccount2" component={NewAccount2} />
         </Stack.Navigator>
       </NavigationContainer>
     </ItemContext>

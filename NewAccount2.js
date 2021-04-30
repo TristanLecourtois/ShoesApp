@@ -8,10 +8,46 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
+import { firebase } from "../ShoesApp/firebase/config";
 
-const NewAccount = ({ navigation }) => {
+const NewAccount2 = ({ navigation }) => {
   const [onFocus, setonFocus] = useState(false);
   const [onFocus2, setonFocus2] = useState(false);
+  const [onFocus3, setonFocus3] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [Alert, setAlert] = useState("");
+
+  const onRegisterPress = () => {
+    if (password !== confirmPassword) {
+      alert("Passwords don't match.");
+      return;
+    }
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        const uid = response.user.uid;
+        const data = {
+          id: uid,
+          email,
+        };
+        const usersRef = firebase.firestore().collection("users");
+        usersRef
+          .doc(uid)
+          .set(data)
+          .then(() => {
+            navigation.navigate("Tabs", { user: data });
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
 
   return (
     <ScrollView style={{ backgroundColor: "rgb(69,73,89)" }}>
@@ -24,7 +60,7 @@ const NewAccount = ({ navigation }) => {
         <View style={{ width: 390, height: 100, marginTop: 50 }}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Login");
+              navigation.navigate("NewAccount");
             }}
           >
             <Image
@@ -67,7 +103,7 @@ const NewAccount = ({ navigation }) => {
         <View style={{ marginLeft: 300, marginTop: -75 }}>
           <View style={{ flexDirection: "row" }}>
             <Text style={{ fontWeight: "bold", color: "white", fontSize: 35 }}>
-              1
+              2
             </Text>
             <Text
               style={{
@@ -102,49 +138,7 @@ const NewAccount = ({ navigation }) => {
             STEPS
           </Text>
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            marginLeft: 40,
-            marginTop: 50,
-            alignItems: "center",
-          }}
-        >
-          <TouchableOpacity
-            style={{
-              height: 115,
-              width: 115,
-              borderWidth: 6,
-              borderRadius: 90,
-              borderColor: "white",
-              shadowColor: "rgb(33,35,45)",
-              shadowOffset: {
-                width: 0,
-                height: 10,
-              },
-              shadowOpacity: 0.3,
-              shadowRadius: 3.94,
-              elevation: 5,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Image
-              resizeMode="contain"
-              style={{ width: 50, height: 50, tintColor: "rgb(188,189,193)" }}
-              source={{
-                uri:
-                  "https://cdn4.iconfinder.com/data/icons/internet-security-solid/32/Internet_Security_hyper_link_web_chain_connect-2-512.png",
-              }}
-            />
-          </TouchableOpacity>
-          <Text
-            style={{ color: "rgb(188,189,193)", fontSize: 15, marginLeft: 20 }}
-          >
-            Upload a profile picture {"\n"}(optional)
-          </Text>
-        </View>
-        <View style={{ alignItems: "center", marginTop: 40 }}>
+        <View style={{ alignItems: "center", marginTop: 80 }}>
           <View
             style={{
               width: 290,
@@ -156,9 +150,13 @@ const NewAccount = ({ navigation }) => {
             }}
           >
             <Text
-              style={{ fontWeight: "bold", color: "white", letterSpacing: 1.1 }}
+              style={{
+                fontWeight: "bold",
+                color: "white",
+                letterSpacing: 1.1,
+              }}
             >
-              NAME
+              EMAIL
             </Text>
             <TextInput
               onFocus={() => {
@@ -168,7 +166,9 @@ const NewAccount = ({ navigation }) => {
                 setonFocus(false);
               }}
               color="rgb(255,174,0)"
-              placeholder="Enter your name"
+              onChangeText={(text) => setEmail(text)}
+              autoCapitalize="none"
+              placeholder="Enter your email"
               placeholderTextColor="rgb(105,107,118)"
               style={{ fontSize: 18, width: 250, marginTop: 10 }}
             />
@@ -185,9 +185,13 @@ const NewAccount = ({ navigation }) => {
             }}
           >
             <Text
-              style={{ fontWeight: "bold", color: "white", letterSpacing: 1.1 }}
+              style={{
+                fontWeight: "bold",
+                color: "white",
+                letterSpacing: 1.1,
+              }}
             >
-              USER
+              PASSWORD
             </Text>
             <TextInput
               onFocus={() => {
@@ -197,15 +201,62 @@ const NewAccount = ({ navigation }) => {
                 setonFocus2(false);
               }}
               color="rgb(255,174,0)"
-              placeholder="Enter your username"
+              secureTextEntry
+              onChangeText={(text) => setPassword(text)}
+              value={password}
+              placeholder="Enter your password"
               placeholderTextColor="rgb(105,107,118)"
               style={{ fontSize: 18, width: 250, marginTop: 10 }}
             />
           </View>
-          <Text></Text>
+          <View
+            style={{
+              width: 290,
+              height: 60,
+              borderBottomWidth: 1,
+              borderBottomColor: onFocus3
+                ? "rgb(255,174,0)"
+                : "rgb(105,107,118)",
+              marginTop: 30,
+            }}
+          >
+            <Text
+              style={{
+                fontWeight: "bold",
+                color: "white",
+                letterSpacing: 1.1,
+              }}
+            >
+              PASSWORD
+            </Text>
+            <TextInput
+              onFocus={() => {
+                setonFocus3(true);
+              }}
+              onBlur={() => {
+                setonFocus3(false);
+              }}
+              color="rgb(255,174,0)"
+              placeholder="Confirm your password"
+              onChangeText={(text) => setConfirmPassword(text)}
+              secureTextEntry
+              value={confirmPassword}
+              placeholderTextColor="rgb(105,107,118)"
+              style={{ fontSize: 18, width: 250, marginTop: 10 }}
+            />
+          </View>
+          <Text
+            style={{
+              fontWeight: "bold",
+              color: "rgb(204,85,110)",
+              marginTop: 20,
+            }}
+          >
+            {Alert}
+          </Text>
           <TouchableOpacity
             style={{
-              width: 285,
+              width: 305,
               alignItems: "center",
               justifyContent: "center",
               backgroundColor: "rgb(33,35,45)",
@@ -220,11 +271,11 @@ const NewAccount = ({ navigation }) => {
               shadowOpacity: 0.3,
               shadowRadius: 3.94,
               elevation: 5,
-                      }}
-                      onPress={() =>navigation.navigate("NewAccount2")}
+            }}
+            onPress={() => onRegisterPress()}
           >
-            <Text style={{ fontWeight: "bold", fontSize: 30, color: "white" }}>
-              Next
+            <Text style={{ fontWeight: "bold", fontSize: 25, color: "white" }}>
+              Create account
             </Text>
           </TouchableOpacity>
           <View style={{ flexDirection: "row", marginTop: 25 }}>
@@ -252,4 +303,4 @@ const NewAccount = ({ navigation }) => {
   );
 };
 
-export default NewAccount;
+export default NewAccount2;

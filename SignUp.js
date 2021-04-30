@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Svg, { Circle } from "react-native-svg";
-import { Montserrat_700Bold } from "@expo-google-fonts/montserrat";
 
 const SignUp = ({ navigation }) => {
   return (
@@ -45,7 +44,6 @@ const SignUp = ({ navigation }) => {
             marginLeft: 60,
             marginTop: 0,
             color: "rgb(63,57,79)",
-            fontFamily: "Montserrat_700Bold",
           }}
         >
           your
@@ -57,7 +55,6 @@ const SignUp = ({ navigation }) => {
             marginLeft: 60,
             marginTop: 0,
             color: "rgb(63,57,79)",
-            fontFamily: "Montserrat",
           }}
         >
           adventure

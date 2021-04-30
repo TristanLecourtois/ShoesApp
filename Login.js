@@ -12,6 +12,8 @@ import {
 const Login = ({ navigation }) => {
   const [onFocus, setonFocus] = useState(false);
   const [onFocus2, setonFocus2] = useState(false);
+      const [email, setEmail] = useState("");
+      const [password, setPassword] = useState("");
   return (
     <ScrollView style={{ backgroundColor: "rgb(69,73,89)" }}>
       <View
@@ -81,13 +83,15 @@ const Login = ({ navigation }) => {
             />
             <TextInput
               color="white"
-              placeholder="Username"
+              placeholder="Email"
               onFocus={() => {
                 setonFocus(true);
               }}
               onBlur={() => {
                 setonFocus(false);
               }}
+              onChangeText={(text) => setEmail(text)}
+              value={email}
               placeholderTextColor="rgb(105,107,118)"
               style={{ fontSize: 18, marginLeft: 10, width: 250 }}
             />
@@ -125,6 +129,8 @@ const Login = ({ navigation }) => {
               onBlur={() => {
                 setonFocus2(false);
               }}
+              onChangeText={(text) => setPassword(text)}
+              value={password}
               placeholder="Password"
               placeholderTextColor="rgb(105,107,118)"
               style={{ fontSize: 18, marginLeft: 10, width: 250 }}
