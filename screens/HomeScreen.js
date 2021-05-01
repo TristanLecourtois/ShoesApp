@@ -11,6 +11,7 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
+import { firebase } from "../firebase/config";
 import { image } from "../constants";
 import { BlurView } from "expo-blur";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
@@ -31,6 +32,9 @@ const HomeScreen = ({ navigation }) => {
   const [selectedBrand, setSelectedBrand] = React.useState("Nike");
   const [size, setSize] = React.useState(10);
 
+  
+  const Newuser = firebase.auth().currentUser;
+   
   function renderShoesSize() {
     return selectedItem.shoesSize.map((item, index) => (
       <View style={{ position: "relative", left: 45, top: -75 }}>
@@ -769,7 +773,7 @@ const HomeScreen = ({ navigation }) => {
               marginLeft: 20,
             }}
           >
-            Welcome
+            Welcome 
           </Text>
           <TouchableOpacity
             style={{

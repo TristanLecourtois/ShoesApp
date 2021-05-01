@@ -27,25 +27,13 @@ const NewAccount2 = ({ navigation }) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
-        const uid = response.user.uid;
-        const data = {
-          id: uid,
-          email,
-        };
-        const usersRef = firebase.firestore().collection("users");
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            navigation.navigate("Tabs", { user: data });
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      })
+      .then(() => navigation.navigate("Tabs"))
       .catch((error) => {
-        alert(error);
+        if (error.code == "auth/email-already-in-use") {
+          alert("Email adress already in use by another user");
+        } else {
+          alert(error);
+        }
       });
   };
 

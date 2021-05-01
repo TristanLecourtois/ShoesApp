@@ -8,12 +8,31 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
+import { firebase } from "../ShoesApp/firebase/config";
 
 const Login = ({ navigation }) => {
   const [onFocus, setonFocus] = useState(false);
   const [onFocus2, setonFocus2] = useState(false);
-      const [email, setEmail] = useState("");
-      const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onLoginPress = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => navigation.navigate("Tabs"))
+      .catch((error) => {
+        switch (error.code) {
+          case "auth/invalid-email":
+            alert("Invalid email");
+          case "auth/invalid-credential":
+            alert("Invalid credentials");
+          case "auth/user-not-found":
+            alert("User not found");
+        }
+      });
+  };
+
   return (
     <ScrollView style={{ backgroundColor: "rgb(69,73,89)" }}>
       <View
@@ -84,6 +103,7 @@ const Login = ({ navigation }) => {
             <TextInput
               color="white"
               placeholder="Email"
+              autoCapitalize="none"
               onFocus={() => {
                 setonFocus(true);
               }}
@@ -123,6 +143,8 @@ const Login = ({ navigation }) => {
             />
             <TextInput
               color="white"
+              autoCapitalize="none"
+              secureTextEntry
               onFocus={() => {
                 setonFocus2(true);
               }}
@@ -155,6 +177,7 @@ const Login = ({ navigation }) => {
               shadowRadius: 3.94,
               elevation: 5,
             }}
+            onPress={() => onLoginPress()}
           >
             <Text style={{ fontWeight: "bold", fontSize: 30, color: "white" }}>
               Log in
