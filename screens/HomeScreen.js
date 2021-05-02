@@ -20,7 +20,8 @@ import { DATA } from "../DATA.js";
 import { categories } from "../categories.js";
 import { useItemContext } from "../ItemContext.js";
 
-const HomeScreen = ({ navigation }) => {
+
+const HomeScreen = ({ navigation,route }) => {
   const { item, setItem } = useItemContext();
   const [modaleVisible, setModalVisible] = React.useState(false);
   const [modaleVisibleFilter, setModalVisibleFilter] = React.useState(false);
@@ -34,6 +35,7 @@ const HomeScreen = ({ navigation }) => {
 
   
   const Newuser = firebase.auth().currentUser;
+  const userName = route.params;
    
   function renderShoesSize() {
     return selectedItem.shoesSize.map((item, index) => (
@@ -773,7 +775,7 @@ const HomeScreen = ({ navigation }) => {
               marginLeft: 20,
             }}
           >
-            Welcome 
+            Welcome {Newuser.displayName}
           </Text>
           <TouchableOpacity
             style={{
@@ -824,7 +826,9 @@ const HomeScreen = ({ navigation }) => {
             }}
             placeholder="Ex : Nike AirMax 3"
           />
-          <TouchableOpacity style={{ width: 30, height: 30 }}>
+          <TouchableOpacity style={{ width: 30, height: 30 }}
+          onPress={() => navigation.navigate("SignUp")}
+          >
             <Image
               source={image.search2}
               resizeMode="contain"

@@ -11,7 +11,8 @@ import {
 
 const NewAccount = ({ navigation }) => {
   const [onFocus, setonFocus] = useState(false);
-  const [onFocus2, setonFocus2] = useState(false);
+    const [onFocus2, setonFocus2] = useState(false);
+    const [name,setName] = useState("");
 
   return (
     <ScrollView style={{ backgroundColor: "rgb(69,73,89)" }}>
@@ -167,6 +168,7 @@ const NewAccount = ({ navigation }) => {
               onBlur={() => {
                 setonFocus(false);
               }}
+              onChangeText={(text) => setName(text)}
               color="rgb(255,174,0)"
               placeholder="Enter your name"
               placeholderTextColor="rgb(105,107,118)"
@@ -220,8 +222,8 @@ const NewAccount = ({ navigation }) => {
               shadowOpacity: 0.3,
               shadowRadius: 3.94,
               elevation: 5,
-                      }}
-                      onPress={() =>navigation.navigate("NewAccount2")}
+            }}
+                      onPress={() => navigation.navigate("NewAccount2", {userName:name})}
           >
             <Text style={{ fontWeight: "bold", fontSize: 30, color: "white" }}>
               Next

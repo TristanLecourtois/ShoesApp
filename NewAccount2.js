@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { firebase } from "../ShoesApp/firebase/config";
 
-const NewAccount2 = ({ navigation }) => {
+const NewAccount2 = ({ navigation, route }) => {
   const [onFocus, setonFocus] = useState(false);
   const [onFocus2, setonFocus2] = useState(false);
   const [onFocus3, setonFocus3] = useState(false);
@@ -18,6 +18,7 @@ const NewAccount2 = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [Alert, setAlert] = useState("");
+  const userName = route.params;
 
   const onRegisterPress = () => {
     if (password !== confirmPassword) {
@@ -27,6 +28,11 @@ const NewAccount2 = ({ navigation }) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        user.updateProfile({
+          displayName: userName,
+        })
+      })
       .then(() => navigation.navigate("Tabs"))
       .catch((error) => {
         if (error.code == "auth/email-already-in-use") {
