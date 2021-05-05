@@ -8,8 +8,8 @@ import {
   FlatList,
   Animated,
 } from "react-native";
-import { useItemContext } from "../ItemContext.js";
-import Context from "../ItemContext";
+import { useItemContext } from "../data/ItemContext.js";
+import Context from "../data/ItemContext";
 import "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import CachedImage from "react-native-expo-cached-image";

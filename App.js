@@ -1,12 +1,12 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Tabs from "../ShoesApp/Tabs";
-import SignUp from "../ShoesApp/SignUp";
-import Login from "../ShoesApp/Login"
-import { ItemContext } from "../ShoesApp/ItemContext";
-import NewAccount from "../ShoesApp/NewAccount"
-import NewAccount2 from "./NewAccount2.js";
+import Tabs from "./src/screens/Tabs";
+import SignUp from "./src/screens/SignUp";
+import Login from "./src/screens/Login"
+import { ItemContext } from "./src/data/ItemContext";
+import NewAccount from "./src/screens/NewAccount"
+import NewAccount2 from "./src/screens/NewAccount2";
 
 const Stack = createStackNavigator();
 

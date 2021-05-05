@@ -32,7 +32,6 @@ const SignUp = ({ navigation }) => {
             marginLeft: 60,
             marginTop: 0,
             color: "rgb(63,57,79)",
-            fontFamily: "Montserrat_700Bold",
           }}
         >
           Start

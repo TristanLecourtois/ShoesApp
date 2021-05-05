@@ -8,7 +8,7 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
-import { firebase } from "../ShoesApp/firebase/config";
+import { firebase } from "../firebase/config";
 
 const Login = ({ navigation }) => {
   const [onFocus, setonFocus] = useState(false);

@@ -16,12 +16,12 @@ import { image } from "../constants";
 import { BlurView } from "expo-blur";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import CachedImage from "react-native-expo-cached-image";
-import { DATA } from "../DATA.js";
-import { categories } from "../categories.js";
-import { useItemContext } from "../ItemContext.js";
+import { DATA } from "../data/DATA.js";
+import { categories } from "../data/categories.js";
+import { useItemContext } from "../data/ItemContext.js";
 
 
-const HomeScreen = ({ navigation,route }) => {
+const HomeScreen = ({ navigation }) => {
   const { item, setItem } = useItemContext();
   const [modaleVisible, setModalVisible] = React.useState(false);
   const [modaleVisibleFilter, setModalVisibleFilter] = React.useState(false);
@@ -33,11 +33,9 @@ const HomeScreen = ({ navigation,route }) => {
   const [selectedBrand, setSelectedBrand] = React.useState("Nike");
   const [size, setSize] = React.useState(10);
 
-  
   const Newuser = firebase.auth().currentUser;
-  const userName = route.params;
-   
-  function renderShoesSize() {
+
+     function renderShoesSize() {
     return selectedItem.shoesSize.map((item, index) => (
       <View style={{ position: "relative", left: 45, top: -75 }}>
         <TouchableOpacity
@@ -770,23 +768,24 @@ const HomeScreen = ({ navigation,route }) => {
           <Text
             style={{
               color: "#000",
-              fontSize: 32,
-              fontWeight: "bold",
+              fontSize: 25,
               marginLeft: 20,
+              marginTop: 5,
             }}
           >
-            Welcome {Newuser.displayName}
+            Welcome {Newuser.displayName}  👋🏻 
           </Text>
           <TouchableOpacity
             style={{
               width: 50,
               height: 50,
               marginVertical: -5,
-              marginHorizontal: 170,
+              position: "absolute",
+              marginHorizontal: Dimensions.get("window").width*0.82,
               alignItems: "center",
               justifyContent: "center",
             }}
-            onPress={() =>navigation.navigate("SignUp")}
+            onPress={() => navigation.navigate("SignUp")}
           >
             <Image
               resizeMode="contain"
@@ -810,7 +809,7 @@ const HomeScreen = ({ navigation,route }) => {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{ flexDirection: "row", justifyContent: "center" }}>
+        <View style={{ flexDirection: "row", justifyContent: "center"}}>
           <TextInput
             placeholderTextColor="#696969"
             style={{
@@ -818,7 +817,7 @@ const HomeScreen = ({ navigation,route }) => {
               height: 50,
               width: 360,
               borderRadius: 10,
-              marginLeft: 15,
+              marginLeft: Dimensions.get("window").width*0.07,
               marginTop: -15,
               marginBottom: 15,
               fontSize: 18,
@@ -826,8 +825,9 @@ const HomeScreen = ({ navigation,route }) => {
             }}
             placeholder="Ex : Nike AirMax 3"
           />
-          <TouchableOpacity style={{ width: 30, height: 30 }}
-          onPress={() => navigation.navigate("SignUp")}
+          <TouchableOpacity
+            style={{ width: 30, height: 30 }}
+            onPress={() => navigation.navigate("SignUp")}
           >
             <Image
               source={image.search2}

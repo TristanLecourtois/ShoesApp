@@ -1,11 +1,11 @@
 import React from 'react';
 import {Image,View,Text,StyleSheet,TouchableOpacity} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native"
-import HomeScreen from './screens/HomeScreen'
-import BasketScreen from './screens/BasketScreen'
-import ProfileScreen from './screens/ProfileScreen'
+import HomeScreen from './HomeScreen'
+import BasketScreen from './BasketScreen'
+import ProfileScreen from './ProfileScreen'
 import {createBottomTabNavigator,BottomTabBar} from "@react-navigation/bottom-tabs"
-import {image} from "./constants"
+import {image} from "../constants"
 import Svg, {Path} from "react-native-svg"
 import {isIphoneX} from "react-native-iphone-x-helper"
 
