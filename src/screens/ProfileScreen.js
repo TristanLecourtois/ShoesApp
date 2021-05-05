@@ -9,9 +9,8 @@ import {
 } from "react-native";
 import { firebase } from "../firebase/config";
 
-const ProfileScreen = ({route,navigation}) => {
-    const profile = route.params;
-  const Newuser = firebase.auth().currentUser;
+const ProfileScreen = ({navigation}) => {
+  let Newuser = firebase.auth().currentUser;
   return (
     <SafeAreaView
       style={{
@@ -47,7 +46,12 @@ const ProfileScreen = ({route,navigation}) => {
             }}
           >
             <Image
-              source={{ uri: Newuser.photoURL }}
+              source={{
+                uri:
+                  Newuser.photoURL === null
+                    ? "https://www.villascitemirabel.com/wp-content/uploads/2016/07/default-profile.png"
+                    : Newuser.photoURL,
+              }}
               resizeMode="contain"
               style={{
                 width: 110,
@@ -88,7 +92,7 @@ const ProfileScreen = ({route,navigation}) => {
                 marginTop: 5,
               }}
             >
-              @ {profile.accountName}
+              @{Newuser.phoneNumber}
             </Text>
           </View>
         </View>

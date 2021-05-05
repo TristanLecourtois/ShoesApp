@@ -28,10 +28,15 @@ const NewAccount2 = ({ navigation, route }) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-        .then(() => {
-            let update = { displayName: profile.userName,photoURL:profile.imageProfile }
-             firebase.auth().currentUser.updateProfile(update);
-            navigation.navigate("Tabs");
+      .then(() => {
+        let update = {
+          displayName: profile.userName,
+          photoURL: profile.imageProfile,
+          phoneNumber: profile.phoneNumber,
+        };
+        firebase.auth().currentUser.updateProfile(update);
+        navigation.navigate("Tabs");
+        console.log(profile.phoneNumber);
       })
       .catch((error) => {
         if (error.code == "auth/email-already-in-use") {

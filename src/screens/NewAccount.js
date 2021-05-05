@@ -257,7 +257,8 @@ const NewAccount = ({ navigation }) => {
                 navigation.navigate("NewAccount2", {
                   userName: name,
                   imageProfile: image,
-                  accountName : userName,
+                  phoneNumber: userName,
+                   
                 })
               }
             >
