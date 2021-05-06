@@ -57,7 +57,7 @@ const FoodScreen = ({ navigation }) => {
       <Swipeable renderRightActions={rightSwipe}>
         <View
           style={{
-            backgroundColor: "#FFF",
+            backgroundColor: "rgb(33,35,45)",
             borderRadius: 15,
             width: Dimensions.get("window").width - 25,
             height: 115,
@@ -73,7 +73,7 @@ const FoodScreen = ({ navigation }) => {
           <View>
             <Text
               style={{
-                color: "#000",
+                color: "#FFF",
                 fontSize: 15,
                 fontWeight: "bold",
                 marginLeft: 20,
@@ -82,12 +82,19 @@ const FoodScreen = ({ navigation }) => {
             >
               {props.data.name}
             </Text>
-            <Text style={{ fontSize: 15, marginTop: 9, marginLeft: 20 }}>
+            <Text
+              style={{
+                fontSize: 15,
+                marginTop: 9,
+                marginLeft: 20,
+                color: "#FFF",
+              }}
+            >
               {props.data.category} Shoes
             </Text>
             <Text
               style={{
-                color: "#000",
+                color: "#FFF",
                 fontSize: 15,
                 fontWeight: "bold",
                 marginLeft: 20,
@@ -123,13 +130,13 @@ const FoodScreen = ({ navigation }) => {
                 style={{
                   fontSize: 20,
                   marginTop: -5,
-                  color: "rgb(184,184,186)",
+                  color: "#000",
                 }}
               >
                 -
               </Text>
             </TouchableOpacity>
-            <Text style={{ marginTop: 10 }}>{count}</Text>
+            <Text style={{ marginTop: 10, color: "#FFF" }}>{count}</Text>
             <TouchableOpacity
               style={{
                 width: 25,
@@ -218,7 +225,21 @@ const FoodScreen = ({ navigation }) => {
                 +
               </Text>
             </TouchableOpacity>
-            <Svg width={390} height={100} viewBox="-35 -60 390 100">
+            <Svg
+              width={390}
+              height={100}
+              viewBox="-35 -60 390 100"
+              style={{
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 5,
+                },
+                shadowOpacity: 0.4,
+                shadowRadius: 3.84,
+                elevation: 5,
+              }}
+            >
               <Path
                 d="M -28 0 L 124 0 A 20 20 0 0 0 195 0 L 320 0"
                 fill={"transparent"}
@@ -228,17 +249,31 @@ const FoodScreen = ({ navigation }) => {
             </Svg>
           </View>
           <View style={{ width: Dimensions.get("window").width }}>
-            <Text style={{ marginLeft: 20, marginTop: 5, fontSize: 18 }}>
+            <Text
+              style={{
+                marginLeft: 20,
+                marginTop: 5,
+                fontSize: 18,
+                color: "#FFF",
+              }}
+            >
               Transaction details
             </Text>
             <View style={{ flex: 1, marginTop: 5, marginLeft: 170 }}>
-              <Text style={{ marginTop: 15, fontSize: 18 }}>
+              <Text style={{ marginTop: 15, fontSize: 18, color: "#FFF" }}>
                 Total Amount: ${priceTotalShoes}
               </Text>
-              <Text style={{ marginTop: 15, fontSize: 18 }}>
+              <Text style={{ marginTop: 15, fontSize: 18, color: "#FFF" }}>
                 Delivery Charges: ${deliveryCharges}
               </Text>
-              <Text style={{ marginTop: 15, fontSize: 20, fontWeight: "bold" }}>
+              <Text
+                style={{
+                  marginTop: 15,
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  color: "#FFF",
+                }}
+              >
                 Total: ${totalPrice}
               </Text>
             </View>
@@ -280,6 +315,7 @@ const FoodScreen = ({ navigation }) => {
       alwaysBounceVertical={true}
       bounces={true}
       showsVerticalScrollIndicator={false}
+      style={{ backgroundColor: "rgb(69, 73, 89)" }}
     >
       <View
         style={{
@@ -290,9 +326,8 @@ const FoodScreen = ({ navigation }) => {
       >
         <Text
           style={{
-            color: "#000",
+            color: "#FFF",
             fontSize: 32,
-            fontWeight: "bold",
             marginLeft: 20,
           }}
         >

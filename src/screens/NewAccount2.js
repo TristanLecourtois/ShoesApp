@@ -36,7 +36,6 @@ const NewAccount2 = ({ navigation, route }) => {
         };
         firebase.auth().currentUser.updateProfile(update);
         navigation.navigate("Tabs");
-        console.log(profile.phoneNumber);
       })
       .catch((error) => {
         if (error.code == "auth/email-already-in-use") {

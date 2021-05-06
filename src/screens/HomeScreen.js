@@ -124,7 +124,7 @@ const HomeScreen = ({ navigation }) => {
               position: "absolute",
               borderRadius: 10,
               borderBottomColor: "transparent",
-              backgroundColor: "white",
+              backgroundColor: "rgb(69, 73, 89)",
             }}
           >
             <View style={{ flexDirection: "row" }}>
@@ -134,12 +134,8 @@ const HomeScreen = ({ navigation }) => {
                   width: 50,
                   top: 50,
                   left: 25,
-                  borderWidth: 1,
-                  borderRadius: 10,
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor: "fbfbfb",
-                  borderColor: "#eff0f7",
                 }}
                 onPress={() => setModalVisibleFilter(!modaleVisibleFilter)}
               >
@@ -148,7 +144,7 @@ const HomeScreen = ({ navigation }) => {
                     uri:
                       "https://www.materialui.co/materialIcons/navigation/arrow_back_grey_192x192.png",
                   }}
-                  style={{ tintColor: "#000", height: 30, width: 30 }}
+                  style={{ tintColor: "#FFF", height: 30, width: 30 }}
                 />
               </TouchableOpacity>
               <Text
@@ -158,6 +154,7 @@ const HomeScreen = ({ navigation }) => {
                   fontSize: 27,
                   fontWeight: "bold",
                   letterSpacing: 2,
+                  color: "white",
                 }}
               >
                 Filters
@@ -165,7 +162,12 @@ const HomeScreen = ({ navigation }) => {
             </View>
             <View style={{ width: 390, height: 160, top: 90 }}>
               <Text
-                style={{ fontSize: 20, letterSpacing: 1.1, marginLeft: 25 }}
+                style={{
+                  fontSize: 20,
+                  letterSpacing: 1.1,
+                  marginLeft: 25,
+                  color: "white",
+                }}
               >
                 Gender :{" "}
               </Text>
@@ -188,9 +190,7 @@ const HomeScreen = ({ navigation }) => {
                       justifyContent: "center",
                       alignItems: "center",
                       backgroundColor:
-                        selectedGender === item.name
-                          ? "#ff4b36"
-                          : "transparent",
+                        selectedGender === item.name ? "#ff4b36" : "#FFF",
                       shadowColor:
                         selectedGender == item.name ? "#ff4b36" : "transparent",
                       shadowOffset: {
@@ -217,7 +217,9 @@ const HomeScreen = ({ navigation }) => {
               />
             </View>
             <View style={{ width: 390, height: 160, top: 80, left: 25 }}>
-              <Text style={{ fontSize: 20, letterSpacing: 1.1 }}>
+              <Text
+                style={{ fontSize: 20, letterSpacing: 1.1, color: "white" }}
+              >
                 Price Range :
               </Text>
               <MultiSlider
@@ -237,15 +239,22 @@ const HomeScreen = ({ navigation }) => {
                 selectedStyle={{ backgroundColor: "#ff4b36" }}
                 enabledOne={true}
                 enabledTwo={true}
-                enableLabel={true}
+                enableLabel={false}
                 step={1}
                 min={1}
                 max={300}
               />
             </View>
             <View style={{ width: 390, height: 160, top: 60 }}>
-              <Text style={{ fontSize: 20, letterSpacing: 1.1, left: 25 }}>
-                Brand :{" "}
+              <Text
+                style={{
+                  fontSize: 20,
+                  letterSpacing: 1.1,
+                  left: 25,
+                  color: "white",
+                }}
+              >
+                Brand :
               </Text>
               <FlatList
                 horizontal={true}
@@ -261,22 +270,13 @@ const HomeScreen = ({ navigation }) => {
                       marginLeft: 15,
                       borderWidth: 2,
                       borderColor:
-                        selectedBrand === item.name ? "#ff4b36" : "#e9e9f0",
+                        selectedBrand === item.name ? "#ff4b36" : "#FFF",
                       marginTop: 25,
                       borderRadius: 20,
                       justifyContent: "center",
                       alignItems: "center",
                       backgroundColor:
-                        selectedBrand === item.name ? "#ff4b36" : "transparent",
-                      shadowColor:
-                        selectedBrand == item.name ? "#ff4b36" : "transparent",
-                      shadowOffset: {
-                        width: 0,
-                        height: 5,
-                      },
-                      shadowOpacity: 0.2,
-                      shadowRadius: 3,
-                      elevation: 17,
+                        selectedBrand === item.name ? "#ff4b36" : "#FFF",
                     }}
                     onPress={() => {
                       {
@@ -299,8 +299,15 @@ const HomeScreen = ({ navigation }) => {
               />
             </View>
             <View style={{ width: 390, height: 160, top: 55 }}>
-              <Text style={{ fontSize: 20, letterSpacing: 1.1, left: 25 }}>
-                Size :{" "}
+              <Text
+                style={{
+                  fontSize: 20,
+                  letterSpacing: 1.1,
+                  left: 25,
+                  color: "white",
+                }}
+              >
+                Size :
               </Text>
               <View style={{ flexDirection: "row" }}>
                 <TouchableOpacity
@@ -313,7 +320,8 @@ const HomeScreen = ({ navigation }) => {
                     marginTop: 30,
                     marginLeft: 75,
                     borderRadius: 15,
-                    borderColor: "#e9e9f0",
+                    borderColor: "#FFF",
+                    backgroundColor:"#FFF"
                   }}
                   onPress={() => setSize(size - 0.5)}
                 >
@@ -325,6 +333,7 @@ const HomeScreen = ({ navigation }) => {
                     marginLeft: 30,
                     fontSize: 20,
                     fontWeight: "bold",
+                    color:"white"
                   }}
                 >
                   US {size}
@@ -340,7 +349,8 @@ const HomeScreen = ({ navigation }) => {
                     top: 30,
                     left: 260,
                     borderRadius: 15,
-                    borderColor: "#e9e9f0",
+                    borderColor: "#FFF",
+                    backgroundColor: "white"
                   }}
                   onPress={() => setSize(size + 0.5)}
                 >
@@ -366,6 +376,7 @@ const HomeScreen = ({ navigation }) => {
                   borderColor: "#e9e9f0",
                   justifyContent: "center",
                   alignItems: "center",
+                  backgroundColor:"white"
                 }}
                 onPress={() => setModalVisibleFilter(!modaleVisibleFilter)}
               >
@@ -437,9 +448,9 @@ const HomeScreen = ({ navigation }) => {
                 alignItems: "center",
                 justifyContent: "center",
               }}
-              blurType="light"
+              blurType="black"
               intensity={100}
-              reducedTransparencyFallbackColor="white"
+              reducedTransparencyFallbackColor="black"
             >
               <View
                 style={{
@@ -605,7 +616,7 @@ const HomeScreen = ({ navigation }) => {
           top: 120,
           height: 400,
           width: Dimensions.get("window").width,
-          shadowColor: "#bdbdbd",
+          shadowColor: "rgb(33,35,45)",
           shadowOffset: {
             width: 0,
             height: 5,
@@ -638,7 +649,7 @@ const HomeScreen = ({ navigation }) => {
                   flexDirection: "row",
                   borderRadius: 10,
                   paddingRight: 10,
-                  backgroundColor: "#bdbdbd",
+                  backgroundColor: "rgb(33,35,45)",
                 }}
                 onPress={() => {
                   setModalVisible(true);
@@ -718,9 +729,11 @@ const HomeScreen = ({ navigation }) => {
                   height: 50,
                   borderWidth: 2,
                   borderRadius: 40,
-                  borderColor: "#303030",
+                  borderColor: "rgb(33,35,45)",
                   backgroundColor:
-                    selectedCategory === index ? "#303030" : "transparent",
+                    selectedCategory === index
+                      ? "rgb(33,35,45)"
+                      : "transparent",
                   justifyContent: "center",
                   alignItems: "center",
                   marginTop: 7,
@@ -736,7 +749,7 @@ const HomeScreen = ({ navigation }) => {
               </TouchableOpacity>
               <Text
                 style={{
-                  color: "#303030",
+                  color: "#FFF",
                   marginTop: 5,
                   fontWeight: selectedCategory === index ? "bold" : "normal",
                 }}
@@ -756,6 +769,7 @@ const HomeScreen = ({ navigation }) => {
       alwaysBounceVertical={true}
       bounces={true}
       showsVerticalScrollIndicator={false}
+      backgroundColor="rgb(69, 73, 89)"
     >
       <View
         style={{
@@ -767,13 +781,13 @@ const HomeScreen = ({ navigation }) => {
         <View style={{ flexDirection: "row", height: 65 }}>
           <Text
             style={{
-              color: "#000",
+              color: "#FFF",
               fontSize: 25,
               marginLeft: 20,
               marginTop: 5,
             }}
           >
-            Welcome {Newuser.displayName}  👋🏻 
+            Welcome {Newuser.displayName}👋🏻
           </Text>
           <TouchableOpacity
             style={{
@@ -781,7 +795,7 @@ const HomeScreen = ({ navigation }) => {
               height: 50,
               marginVertical: -5,
               position: "absolute",
-              marginHorizontal: Dimensions.get("window").width*0.82,
+              marginHorizontal: Dimensions.get("window").width * 0.82,
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -789,7 +803,7 @@ const HomeScreen = ({ navigation }) => {
           >
             <Image
               resizeMode="contain"
-              style={{ width: 25, tintColor: "#000" }}
+              style={{ width: 25, tintColor: "rgb(177,179,185)" }}
               source={image.bell}
             />
             <View
@@ -809,7 +823,7 @@ const HomeScreen = ({ navigation }) => {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{ flexDirection: "row", justifyContent: "center"}}>
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <TextInput
             placeholderTextColor="#696969"
             style={{
@@ -817,7 +831,7 @@ const HomeScreen = ({ navigation }) => {
               height: 50,
               width: 360,
               borderRadius: 10,
-              marginLeft: Dimensions.get("window").width*0.07,
+              marginLeft: Dimensions.get("window").width * 0.07,
               marginTop: -15,
               marginBottom: 15,
               fontSize: 18,
@@ -848,7 +862,7 @@ const HomeScreen = ({ navigation }) => {
             fontWeight: "bold",
             marginLeft: 20,
             marginBottom: 10,
-            color: "#000",
+            color: "#FFF",
           }}
         >
           Top Offers
@@ -942,7 +956,7 @@ const HomeScreen = ({ navigation }) => {
                 fontWeight: "bold",
                 marginLeft: 20,
                 marginTop: 10,
-                color: "#000",
+                color: "#FFF",
               }}
             >
               Categories
@@ -951,8 +965,8 @@ const HomeScreen = ({ navigation }) => {
               style={{
                 borderRadius: 10,
                 borderWidth: 2,
-                backgroundColor: "#303030",
-                borderColor: "#303030",
+                backgroundColor: "rgb(33,35,45)",
+                borderColor: "rgb(33,35,45)",
                 padding: 5,
                 position: "relative",
                 marginTop: 7,

@@ -17,7 +17,7 @@ const ProfileScreen = ({navigation}) => {
         flex: 1,
         width: Dimensions.get("window").width,
         height: Dimensions.get("window").height,
-        backgroundColor: "rgb(33,35,45)",
+        backgroundColor: "rgb(69, 73, 89)",
       }}
     >
       <ScrollView>
@@ -52,11 +52,11 @@ const ProfileScreen = ({navigation}) => {
                     ? "https://www.villascitemirabel.com/wp-content/uploads/2016/07/default-profile.png"
                     : Newuser.photoURL,
               }}
-              resizeMode="contain"
+              resizeMode="cover"
               style={{
                 width: 110,
                 height: 110,
-                borderRadius: 50,
+                borderRadius: 80,
                 borderWidth: 3,
                 borderColor: "white",
               }}
@@ -92,7 +92,7 @@ const ProfileScreen = ({navigation}) => {
                 marginTop: 5,
               }}
             >
-              @{Newuser.phoneNumber}
+              @{Newuser.phoneNumber}userName10
             </Text>
           </View>
         </View>
